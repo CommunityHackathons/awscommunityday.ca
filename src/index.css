@@ -231,17 +231,13 @@
   font-weight: 800;
 }
 
-.event-header-register {
-  animation: events-cta-glow 7.5s ease-in-out infinite;
-}
-
-.events-register-cta {
+.registration-button {
   position: relative;
   overflow: hidden;
   animation: events-cta-glow 7.5s ease-in-out infinite;
 }
 
-.events-register-cta::after {
+.registration-button::after {
   position: absolute;
   top: -20%;
   bottom: -20%;
@@ -254,7 +250,7 @@
   animation: events-cta-shine 7.5s ease-in-out infinite;
 }
 
-.events-register-cta a {
+.registration-button a {
   display: flex;
   width: 100%;
   align-items: center;
@@ -315,9 +311,8 @@
 
 @media (prefers-reduced-motion: reduce) {
   .events-registration-track,
-  .event-header-register,
-  .events-register-cta,
-  .events-register-cta::after,
+  .registration-button,
+  .registration-button::after,
   .events-cta-roll-track {
     animation: none;
   }

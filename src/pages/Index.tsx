@@ -1,6 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { Calendar, MapPin, ArrowRight, Code2, Users, Trophy, Rocket, Sparkles, Network, Zap, Camera, Eye, Bot, Activity, Heart, Download } from "lucide-react";
 import { useState, useEffect, useCallback } from "react";
+import CommunityHeader from "@/components/CommunityHeader";
+import RegistrationButton from "@/components/RegistrationButton";
 import heroBg from "@/assets/hero-bg.jpg";
 import awsLogo from "@/assets/aws-logo.svg";
 import headshotGarima from "@/assets/headshots/Garima_bajpai.png";
@@ -253,33 +255,63 @@ const GalleryCarousel = () => {
 const Index = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      {/* NAV */}
-      <header className="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-background/70 border-b border-border/50">
-        <nav className="container mx-auto flex items-center justify-between py-4 px-6">
-          <a href="#top" className="font-mono text-sm tracking-tight">
-            <span className="text-gradient font-bold">awscommunityday</span>
-            <span className="text-muted-foreground">/2026</span>
-          </a>
-          <div className="hidden md:flex items-center gap-8 text-sm text-muted-foreground">
-            <a href="/events" className="hover:text-accent transition-smooth text-accent/80 font-medium">Events</a>
-            <a href="#about" className="hover:text-foreground transition-smooth">About</a>
-            <a href="#tracks" className="hover:text-foreground transition-smooth">Tracks</a>
-            <a href="#masterclass" className="hover:text-accent transition-smooth text-accent/80 font-medium">Masterclass</a>
-            <a href="#agenda" className="hover:text-foreground transition-smooth">Agenda</a>
-            <a href="#experience" className="hover:text-foreground transition-smooth">Experience</a>
-            <a href="#gallery" className="hover:text-foreground transition-smooth">Gallery</a>
-            <a href="#speakers" className="hover:text-foreground transition-smooth">Speakers</a>
-            <a href="#founders" className="hover:text-foreground transition-smooth">Founders</a>
-            <a href="#sponsors" className="hover:text-foreground transition-smooth">Sponsors</a>
-          </div>
-          <Button asChild size="sm" className="bg-gradient-primary hover:opacity-90 border-0">
-            <a href={CONF_URL} target="_blank" rel="noopener noreferrer">Register</a>
-          </Button>
-        </nav>
-      </header>
+      <CommunityHeader active="home" />
 
-      {/* HERO */}
-      <section id="top" className="relative min-h-screen flex items-center overflow-hidden pt-20">
+      {/* CURRENT COMMUNITY LANDING */}
+      <section id="top" className="relative min-h-screen flex items-center overflow-hidden pt-36 md:pt-28">
+        <img
+          src={heroBg}
+          alt=""
+          width={1920}
+          height={1080}
+          className="absolute inset-0 w-full h-full object-cover opacity-60"
+        />
+        <div className="absolute inset-0 bg-hero-gradient" />
+        <div className="absolute inset-0 bg-accent-glow" />
+
+        <div className="container mx-auto px-6 relative z-10 py-20">
+          <div className="grid items-center gap-12 md:grid-cols-2">
+            <div className="animate-fade-up">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/10 backdrop-blur-sm mb-8">
+                <Sparkles className="w-4 h-4 text-accent" />
+                <span className="font-mono text-xs uppercase tracking-widest text-foreground">Ottawa community calendar · 2026–2027</span>
+              </div>
+              <img src={awsLogo} alt="AWS" className="h-8 md:h-10 mb-6 invert brightness-0 invert opacity-90" />
+              <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-tight">AWS COMMUNITY<br /><span className="text-accent">OTTAWA</span></h1>
+              <p className="mt-6 max-w-2xl text-lg md:text-xl text-muted-foreground leading-relaxed">The next chapter starts with builders, leaders, and practitioners coming together to learn, share, and make useful things happen in the cloud.</p>
+              <div className="mt-8 flex flex-wrap gap-6 text-sm font-mono text-muted-foreground">
+                <span className="flex items-center gap-2"><Calendar className="w-4 h-4 text-accent" /> Next event · November 22, 2026</span>
+                <span className="flex items-center gap-2"><MapPin className="w-4 h-4 text-accent" /> Ottawa, Ontario</span>
+                <span className="flex items-center gap-2"><Users className="w-4 h-4 text-accent" /> Community-led</span>
+              </div>
+              <div className="mt-10 flex flex-wrap gap-4">
+                <RegistrationButton className="h-14 w-full max-w-full px-5 text-base sm:w-[320px]" />
+                <Button asChild size="lg" className="h-14 border border-accent/50 bg-background/20 px-8 text-base hover:bg-accent/10 hover:text-foreground">
+                  <a href="/events">Explore all events <ArrowRight className="ml-2 w-5 h-5" /></a>
+                </Button>
+              </div>
+            </div>
+
+            <div className="hidden md:block">
+              <div className="border border-accent/30 bg-card/70 p-7 shadow-elevated backdrop-blur-sm">
+                <p className="font-mono text-xs uppercase tracking-widest text-accent">Next up</p>
+                <div className="mt-5 flex items-end justify-between gap-6 border-b border-border pb-6">
+                  <div><p className="font-mono text-sm text-muted-foreground">NOVEMBER</p><strong className="text-6xl font-bold leading-none">22</strong></div>
+                  <div className="pb-1 text-right"><p className="font-mono text-xs text-accent">2026 · OTTAWA</p><h2 className="mt-2 text-2xl font-bold">AWS Leadership<br />Community Day</h2></div>
+                </div>
+                <div className="mt-6 grid gap-4 font-mono text-xs text-muted-foreground">
+                  <div className="flex items-center justify-between"><span>MAR 06 · 2027</span><span className="text-foreground">Women AWS Summit</span></div>
+                  <div className="flex items-center justify-between"><span>AUG 20–21 · 2027</span><span className="text-foreground">Community Day + Hackathon</span></div>
+                </div>
+                <a href="/events" className="mt-7 inline-flex items-center font-mono text-sm font-semibold text-accent hover:text-foreground">View the calendar <ArrowRight className="ml-2 h-4 w-4" /></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FEATURED EVENT */}
+      <section id="leadership-day" className="relative min-h-screen flex items-center overflow-hidden pt-36 md:pt-28 border-t border-border">
         <img
           src={heroBg}
           alt=""
@@ -296,52 +328,40 @@ const Index = () => {
             <div className="animate-fade-up">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/10 backdrop-blur-sm mb-8">
                 <Sparkles className="w-4 h-4 text-accent" />
-                <span className="font-mono text-xs uppercase tracking-widest text-foreground">Ottawa · Aug 21–22, 2026</span>
+                <span className="font-mono text-xs uppercase tracking-widest text-foreground">Registration open · November 22, 2026</span>
               </div>
 
               <img src={awsLogo} alt="AWS" className="h-8 md:h-10 mb-6 invert brightness-0 invert opacity-90" />
 
-              <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-tight mb-2">
-                COMMUNITY DAY 2026
-              </h1>
+              <h2 className="text-5xl md:text-7xl font-bold tracking-tight leading-tight mb-2">
+                AWS LEADERSHIP DAY
+              </h2>
               <h2 className="text-2xl md:text-4xl font-bold tracking-tight text-accent leading-tight mb-2 flex items-center gap-3">
                 <svg viewBox="0 0 40 24" className="w-8 h-5 md:w-10 md:h-6 flex-shrink-0" fill="none">
                   <path d="M4 16c8 4 20 4 32 0" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
                   <path d="M30 12l4 4 2-8" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
-                OTTAWA
+                OTTAWA · 2026
               </h2>
               <p className="text-base md:text-lg font-medium text-muted-foreground tracking-wide mb-6">
-                <span className="text-accent font-semibold">Co-located with the DevOps for GenAI Hackathon</span>
+                <span className="text-accent font-semibold">A gathering for the people shaping cloud, AI, and technology leadership.</span>
               </p>
 
               <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-4 leading-relaxed">
-                Join us for a dynamic AWS Community Day co-located with a hands-on DevOps & GenAI Hackathon, where builders, engineers, and technology leaders come together to explore the future of cloud and AI-powered delivery.
+                Spend an afternoon with the Ottawa cloud community: meet leaders, exchange practical ideas, and build stronger connections across AWS, DevOps, and AI.
               </p>
 
               <div className="flex flex-wrap gap-6 text-sm font-mono text-muted-foreground mb-10">
-                <span className="flex items-center gap-2"><Calendar className="w-4 h-4 text-accent" /> {EVENT_DATE}</span>
-                <span className="flex items-center gap-2"><MapPin className="w-4 h-4 text-accent" /> {VENUE}</span>
+                <span className="flex items-center gap-2"><Calendar className="w-4 h-4 text-accent" /> November 22, 2026</span>
+                <span className="flex items-center gap-2"><MapPin className="w-4 h-4 text-accent" /> Ottawa, Ontario</span>
                 <span className="flex items-center gap-2"><Users className="w-4 h-4 text-accent" /> Community-driven</span>
               </div>
 
               <div className="flex flex-wrap gap-4 mb-4">
-                <Button asChild size="lg" className="bg-gradient-primary hover:opacity-90 border-0 text-base h-14 px-8 shadow-glow animate-pulse-glow relative overflow-hidden">
-                  <a href={CONF_URL} target="_blank" rel="noopener noreferrer">
-                    <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-[shimmer_2s_infinite]" />
-                    Register for Community Day <ArrowRight className="ml-2 w-5 h-5" />
-                  </a>
-                </Button>
+                <RegistrationButton className="h-14 w-full max-w-full px-5 text-base sm:w-[320px]" />
                 <Button asChild size="lg" className="text-base h-14 px-8 bg-background/20 backdrop-blur-sm border border-accent/50 shadow-[0_0_15px_rgba(146,119,255,0.15)] hover:shadow-[0_0_25px_rgba(146,119,255,0.3)] hover:border-accent/80 hover:bg-accent/10 transition-all duration-300">
-                  <a href={HACK_URL} target="_blank" rel="noopener noreferrer">
-                    Register for Hackathon <Code2 className="ml-2 w-5 h-5" />
-                  </a>
-                </Button>
-              </div>
-              <div className="flex flex-wrap gap-4">
-                <Button asChild size="lg" className="text-base h-14 px-8 bg-accent/10 backdrop-blur-sm border border-accent/40 hover:bg-accent/20 hover:border-accent/70 hover:shadow-[0_0_25px_rgba(146,119,255,0.25)] transition-all duration-300">
-                  <a href="https://www.eventbrite.com/e/masterclass-devops-ai-and-agents-with-john-willis-tickets-1993440231394" target="_blank" rel="noopener noreferrer">
-                    <Sparkles className="mr-2 w-5 h-5 text-accent" /> Masterclass - DevOps, AI, and Agents with John Willis <ArrowRight className="ml-2 w-5 h-5" />
+                  <a href="/events">
+                    View all events <Calendar className="ml-2 w-5 h-5" />
                   </a>
                 </Button>
               </div>
@@ -442,6 +462,13 @@ const Index = () => {
       </section>
 
       {/* ABOUT */}
+      <section id="2026-archive" className="border-y border-border bg-card py-12 md:py-16">
+        <div className="container mx-auto flex flex-col gap-4 px-6 md:flex-row md:items-end md:justify-between">
+          <div><p className="font-mono text-xs uppercase tracking-widest text-accent">2026 Community Day Archive</p><h2 className="mt-3 text-3xl font-bold md:text-4xl">The program, speakers, and moments from August 2026.</h2></div>
+          <a href="#agenda" className="inline-flex items-center font-mono text-sm font-semibold text-accent hover:text-foreground">Browse the archive <ArrowRight className="ml-2 h-4 w-4" /></a>
+        </div>
+      </section>
+
       <section id="about" className="py-24 md:py-32 bg-gradient-surface">
         <div className="container mx-auto px-6">
           <div className="grid md:grid-cols-12 gap-12 items-start">

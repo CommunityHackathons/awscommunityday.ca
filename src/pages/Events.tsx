@@ -3,8 +3,10 @@ import { ArrowRight, CalendarDays, MapPin, Network, Sparkles, Users } from "luci
 import { useState } from "react";
 import awsLogo from "@/assets/aws-logo.svg";
 import heroBg from "@/assets/hero-bg.jpg";
+import CommunityHeader from "@/components/CommunityHeader";
+import RegistrationButton, { LEADERSHIP_DAY_URL } from "@/components/RegistrationButton";
 
-const EVENTBRITE_URL = "https://www.eventbrite.ca/e/aws-leadership-community-day-tickets-2003704713737?aff=oddtdtcreator&keep_tld=true";
+const EVENTBRITE_URL = LEADERSHIP_DAY_URL;
 
 const events = [
   {
@@ -53,50 +55,7 @@ const Events = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <header className="fixed inset-x-0 top-0 z-50 border-b border-border/70 bg-background/90 backdrop-blur-md">
-        <nav className="container mx-auto flex h-16 items-center gap-5 px-6">
-          <a href="/" className="shrink-0 font-mono text-sm tracking-tight">
-            <span className="text-gradient font-bold">awscommunityday</span>
-            <span className="text-muted-foreground">/2026</span>
-          </a>
-          <div className="hidden items-center gap-5 text-sm text-muted-foreground md:flex">
-            <a href="/" className="transition-smooth hover:text-foreground">2026 Event</a>
-            <a href="/events" aria-current="page" className="font-medium text-accent">Events</a>
-            <a href="/#agenda" className="transition-smooth hover:text-foreground">Agenda</a>
-            <a href="/#speakers" className="transition-smooth hover:text-foreground">Speakers</a>
-            <a href="/#sponsors" className="transition-smooth hover:text-foreground">Sponsors</a>
-          </div>
-          <Button asChild size="sm" className="event-header-register ml-auto bg-gradient-primary hover:opacity-90">
-            <a href={EVENTBRITE_URL} target="_blank" rel="noopener noreferrer">Register</a>
-          </Button>
-        </nav>
-        <div className="border-t border-border/70 bg-background/90 md:hidden">
-          <div className="container mx-auto flex gap-1 overflow-x-auto px-4 py-2 font-mono text-xs">
-            <a href="/" className="shrink-0 rounded px-3 py-2 text-muted-foreground hover:text-foreground">2026 Event</a>
-            <a href="/events" aria-current="page" className="shrink-0 rounded bg-primary/15 px-3 py-2 font-semibold text-accent">Events</a>
-            <a href="/#agenda" className="shrink-0 rounded px-3 py-2 text-muted-foreground hover:text-foreground">Agenda</a>
-            <a href="/#speakers" className="shrink-0 rounded px-3 py-2 text-muted-foreground hover:text-foreground">Speakers</a>
-            <a href="/#sponsors" className="shrink-0 rounded px-3 py-2 text-muted-foreground hover:text-foreground">Sponsors</a>
-          </div>
-        </div>
-        <div className="events-registration-ticker">
-          <a href={EVENTBRITE_URL} target="_blank" rel="noopener noreferrer" className="events-registration-ticker-link" aria-label="Registration is open for AWS Leadership Community Day on November 22, 2026. Reserve your place.">
-            <span className="events-registration-label">Registration open</span>
-            <span className="events-registration-viewport" aria-hidden="true">
-              <span className="events-registration-track">
-                {[0, 1].map((repeat) => (
-                  <span key={repeat} className="events-registration-message">
-                    <span>AWS Leadership Community Day</span>
-                    <span>November 22, 2026</span>
-                    <span>Ottawa</span>
-                    <span className="events-registration-action">Reserve your place <ArrowRight className="h-3.5 w-3.5" /></span>
-                  </span>
-                ))}
-              </span>
-            </span>
-          </a>
-        </div>
-      </header>
+      <CommunityHeader active="events" />
 
       <main className="pt-36 md:pt-24">
         <section className="relative isolate overflow-hidden border-b border-border">
@@ -117,21 +76,9 @@ const Events = () => {
                 <span className="flex items-center gap-2"><Users className="h-4 w-4 text-accent" /> Community-led</span>
               </div>
               <div className="mt-10 flex flex-wrap gap-4">
-                <Button asChild size="lg" className="events-register-cta h-14 w-full max-w-full bg-gradient-primary px-5 text-base hover:opacity-95 sm:w-[320px]">
-                  <a href={EVENTBRITE_URL} target="_blank" rel="noopener noreferrer" aria-label="Register for Leadership Day">
-                    <span className="events-cta-roll-viewport" aria-hidden="true">
-                      <span className="events-cta-roll-track">
-                        <span>Register for Leadership Day</span>
-                        <span>Nov 22 · Ottawa</span>
-                        <span>Registration open</span>
-                        <span>Register for Leadership Day</span>
-                      </span>
-                    </span>
-                    <ArrowRight className="ml-2 h-5 w-5 shrink-0" />
-                  </a>
-                </Button>
+                <RegistrationButton className="h-14 w-full max-w-full px-5 text-base sm:w-[320px]" />
                 <Button asChild size="lg" variant="outline" className="h-14 border-accent/50 bg-background/20 px-8 text-base hover:bg-accent/10 hover:text-foreground">
-                  <a href="/#top">Explore 2026 Community Day</a>
+                  <a href="/#2026-archive">Explore 2026 Community Day</a>
                 </Button>
               </div>
             </div>
@@ -219,12 +166,12 @@ const Events = () => {
         <section className="border-t border-primary/40 bg-gradient-primary py-16 text-primary-foreground md:py-20">
           <div className="container mx-auto flex flex-col gap-7 px-6 md:flex-row md:items-center md:justify-between">
             <div className="max-w-2xl"><p className="font-mono text-xs uppercase tracking-widest text-primary-foreground/70">Past event</p><h2 className="mt-3 text-3xl font-bold">Explore the 2026 Community Day program.</h2></div>
-            <Button asChild size="lg" variant="secondary" className="h-12 shrink-0 px-6"><a href="/#top">View the 2026 event <ArrowRight className="ml-2 h-4 w-4" /></a></Button>
+            <Button asChild size="lg" variant="secondary" className="h-12 shrink-0 px-6"><a href="/#2026-archive">View the 2026 event <ArrowRight className="ml-2 h-4 w-4" /></a></Button>
           </div>
         </section>
       </main>
 
-      <footer className="border-t border-border bg-card py-12"><div className="container mx-auto flex flex-col items-center justify-between gap-4 px-6 text-sm text-muted-foreground md:flex-row"><div className="font-mono"><span className="font-bold text-accent">awscommunityday</span> · Ottawa</div><a href="/" className="transition-smooth hover:text-accent">Back to the 2026 event</a></div></footer>
+      <footer className="border-t border-border bg-card py-12"><div className="container mx-auto flex flex-col items-center justify-between gap-4 px-6 text-sm text-muted-foreground md:flex-row"><div className="font-mono"><span className="font-bold text-accent">awscommunityday</span> · Ottawa</div><a href="/#2026-archive" className="transition-smooth hover:text-accent">View the 2026 event archive</a></div></footer>
     </div>
   );
 };
