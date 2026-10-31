@@ -261,6 +261,7 @@ const Index = () => {
             <span className="text-muted-foreground">/2026</span>
           </a>
           <div className="hidden md:flex items-center gap-8 text-sm text-muted-foreground">
+            <a href="/events" className="hover:text-accent transition-smooth text-accent/80 font-medium">Events</a>
             <a href="#about" className="hover:text-foreground transition-smooth">About</a>
             <a href="#tracks" className="hover:text-foreground transition-smooth">Tracks</a>
             <a href="#masterclass" className="hover:text-accent transition-smooth text-accent/80 font-medium">Masterclass</a>
